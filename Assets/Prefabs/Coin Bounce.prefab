@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8900196249909033327}
   m_Layer: 0
   m_Name: Coin Bounce
-  m_TagString: Untagged
+  m_TagString: Objects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreAmount: 2
+  deadEffect: {fileID: 7747510221671553889, guid: 7cff8bc1801f6444a9c73ddf2e1f3d46, type: 3}
 --- !u!114 &2844301583021455693
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -19,7 +19,7 @@ public class Block : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (isCollided == false)
+        if (isCollided == false && collision.gameObject.tag =="Player")
         {
             print(collision.gameObject.name);
             GetComponent<MeshRenderer>().material.color = Color.black;

@@ -11,9 +11,11 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private Text timeText;
     [SerializeField] private GameObject winPanel;
     [SerializeField] private GameObject losePanel;
+    [SerializeField]private List<GameObject> destroyAfterGame=new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
+        
 
     }
 
@@ -30,13 +32,31 @@ public class TimeManager : MonoBehaviour
             gamefinished = true;
             winPanel.gameObject.SetActive(true);//objenin açýk veya kapalý olmasýna bakar
             losePanel.gameObject.SetActive(false);
+            UpdateObjectsList("Enemy");
+            UpdateObjectsList("Objects");
+            foreach (GameObject allobjects in destroyAfterGame)
+            {
+                Destroy(allobjects);
+            }
         }
         if (gameOver == true)
         {
             losePanel.gameObject.SetActive(true);
             winPanel.gameObject.SetActive(false);
+            UpdateObjectsList("Enemy");
+            UpdateObjectsList("Objects");
+            foreach (GameObject allobjects in destroyAfterGame)
+            {
+                Destroy(allobjects);
+            }
         }
     }
+    private void UpdateObjectsList(string tag)
+    {
+        destroyAfterGame.AddRange(GameObject.FindGameObjectsWithTag(tag));//birden fazla olduðu için range kullandýk.Tek obje olsatdý Add kullanýlýrdý.
+        
+
+    } 
     private void UpdateTheTimer()
     {
         timeText.text = "Time: " + ((int)Time.timeSinceLevelLoad);

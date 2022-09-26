@@ -5,6 +5,7 @@ using UnityEngine;
 public class Pickable : MonoBehaviour
 {
     public int scoreAmount = 2;
+    [SerializeField] private GameObject deadEffect;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,5 +35,9 @@ public class Pickable : MonoBehaviour
             Destroy(gameObject);
         }
         
+    }
+    private void OnDisable()//Bir obje kapandýðýnda veya yok olduðunda bir kez çalýþýr.
+    {
+        Instantiate(deadEffect, transform.position, transform.rotation);
     }
 }

@@ -7,7 +7,8 @@ public class Enemy : MonoBehaviour
     private Transform target;
     [SerializeField] private float speed = 3;
     [SerializeField] private float stopDistance = 1f;
-    
+    [SerializeField] private GameObject deadEffect;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +39,11 @@ public class Enemy : MonoBehaviour
             timeManager.gameOver = true;
         }
     }
-    
+    private void OnDisable()//Bir obje kapandýðýnda veya yok olduðunda bir kez çalýþýr.
+    {
+        Instantiate(deadEffect, transform.position, transform.rotation);
+    }
+
     //void FollowingDistance()
     //{
     //    float distance = Vector3.Distance(transform.position, target.position);

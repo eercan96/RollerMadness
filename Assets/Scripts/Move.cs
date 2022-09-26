@@ -8,6 +8,7 @@ public class Move : MonoBehaviour
     [SerializeField] private float speed = 15f;
     private Rigidbody rigidbody;
     private TimeManager timeManager;
+    [SerializeField] private GameObject deadEffect;
     //[SerializeField] private float x=0;
     //[SerializeField] private float z=0;
     // Start is called before the first frame update
@@ -40,6 +41,10 @@ public class Move : MonoBehaviour
         rigidbody.AddForce(moment);
         //transform.position += moment;
 
+    }
+    private void OnDisable()//Bir obje kapandýðýnda veya yok olduðunda bir kez çalýþýr.
+    {
+        Instantiate(deadEffect, transform.position, transform.rotation);
     }
 
 
